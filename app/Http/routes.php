@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/',function(){
+	echo('ini');
+});
 
 Route::get('home', 'HomeController@index');
 
