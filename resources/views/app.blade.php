@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>@section('title') Salempro @show</title>
+	<title>@section('title') UniPanamericana @show</title>
 
 	<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
@@ -28,7 +28,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Salempro</a>
+				<a class="navbar-brand" href="#"><img src="{{asset('
+				/img/logo.gif')}}" alt=""/><span>Unipanamericana</span></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,6 +56,11 @@
     <main class="container">
 	@yield('content')
     </main>
+
+	<footer>
+		Avenida (Calle) 32 No. 17 - 62 Bogotá D.C., Colombia -
+		Teléfonos: Admisiones: 3078161 - Información: 3380666
+	</footer>
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

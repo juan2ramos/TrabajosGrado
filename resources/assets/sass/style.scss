@@ -1,8 +1,41 @@
 @import "bootstrap/stylesheets/_bootstrap.scss";
-body{
-  background: #ececee;
-}
-h1{
-  color: red;
+
+@mixin breakpoint($point) {
+  $small: "(min-width: 30rem)";
+  $medium: "(min-width: 46rem)";
+  $large: "(min-width: 65rem)";
+
+  @if $point == large {
+    @media #{$large} {
+      @content;
+    }
+  } @else if $point == medium {
+    @media #{$medium} {
+      @content;
+    }
+  } @else if $point == small {
+    @media #{$small}  {
+      @content;
+    }
+  }
 }
 
+html, body {
+  color: #7a7a7a;
+  font-size: 16px;
+  height: 100%;
+}
+
+footer {
+  background: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  bottom: 0;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.navbar-brand img {
+  display: inline;
+}

@@ -12,5 +12,5 @@ elixir.config.sourcemaps = false;
  */
 
 elixir(function(mix) {
-    mix.sass("style.scss", 'public/css/');
+ mix.sass("style.scss", 'public/css/');
 });
