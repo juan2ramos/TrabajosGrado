@@ -11,13 +11,6 @@
 |
 */
 
-<<<<<<< HEAD
-=======
-Route::get('/',function(){
-	echo('ini');
-});
->>>>>>> d2ba7c21b226577300ccaa7b4aa9805d5af77649
-
 
 Route::get('/', 'HomeController@index');
 
