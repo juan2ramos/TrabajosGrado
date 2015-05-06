@@ -12,13 +12,15 @@ class CreateStudentProjectTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table)
+		Schema::create('student_project', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->string('email')->unique();
-			$table->string('password', 60);
-			$table->rememberToken();
+			$table->integer('code_class');
+			$table->integer('code_group');
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->integer('project_id')->unsigned();
+            $table->foreign('project_id')->references('id')->on('projects');
 			$table->timestamps();
 		});
 	}
@@ -30,7 +32,7 @@ class CreateStudentProjectTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('student_project');
 	}
 
 }

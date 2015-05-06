@@ -12,7 +12,12 @@ class CreateLinesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('lines', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name_line');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +27,7 @@ class CreateLinesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('lines');
 	}
 
 }

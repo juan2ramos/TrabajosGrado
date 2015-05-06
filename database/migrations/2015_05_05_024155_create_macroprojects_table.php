@@ -12,7 +12,13 @@ class CreateMacroprojectsTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('macroprojects', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name_macroprojects');
+			$table->string('state');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +28,7 @@ class CreateMacroprojectsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('macroprojects');
 	}
 
 }

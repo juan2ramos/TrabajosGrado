@@ -12,7 +12,23 @@ class CreateProjectsTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('projects', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name_project');
+			$table->integer('note_1');
+			$table->integer('note_2');
+			$table->integer('note_3');
+			$table->integer('state_id')->unsigned();
+			$table->foreign('state_id')->references('id')->on('states');
+			$table->string('failure');
+			$table->text('observation');
+			$table->date('date');
+
+			$table->integer('option_id')->unsigned();
+			$table->foreign('option_id')->references('id')->on('options');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +38,7 @@ class CreateProjectsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('projects');
 	}
 
 }

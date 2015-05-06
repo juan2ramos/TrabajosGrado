@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace degreeWorks\Events;
 
 abstract class Event {
 
