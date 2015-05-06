@@ -18,3 +18,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::get('s', function(){
+    $s = \degreeWorks\Models\Student::all;
+    dd($s);
+});
+Route::get('inscripcion-estudiantes','StudentController@index');
