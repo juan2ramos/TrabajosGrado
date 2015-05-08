@@ -19,60 +19,84 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="{{asset('
+<div class="wrapper">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="{{asset('
 				/img/logo.gif')}}" alt=""/><span>Unipanamericana</span></a>
-        </div>
+            </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('inscripcion-estudiantes') }}">Inscripción estudiante</a></li>
-                @if (Auth::check())
-                    @if(Auth::user()->rol == 'researchers')
-                        <li><a href="{{ url('/') }}">Parametrización</a></li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/') }}">Inicio</a></li>
+                    @if (Auth::check())
+                        @if(Auth::user()->rol == 'researchers')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false">Convocatoria TG <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('abrir-convocatoria') }}">Abrir convocatoria </a></li>
+                                    <li><a href="{{ url('listado-inscritos') }}">Generar listado de inscritos</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ url('opciones-grado') }}">Opciones</a></li>
+                            <li><a href="{{ url('historicos') }}">Historicos</a></li>
+                            <li><a href="{{ url('estadisticas') }}">Estadísticas</a></li>
+                            <li><a href="{{ url('resultados') }}">Resultados</a></li>
+                            <li><a href="{{ url('seguimiento-proyectos') }}">Seguimiento</a></li>
+                        @endif
+
+                        @if(Auth::user()->rol == 'students')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false">Gestión proyectos <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="opciones-propuesta">Escoge una opción</a></li>
+                                    <li><a href="subir-propuesta">Sube tu propuesta</a></li>
+                                    <li><a href="consultar-resultados">Consulta los resultados</a></li>
+                                </ul>
+                            </li>
+                        @endif
+                    @else
+                        <li><a href="{{ url('inscripcion-estudiantes') }}">Inscripción estudiante</a></li>
                     @endif
 
-                    @if(Auth::user()->rol == 'students')
-                        <li><a href="{{ url('/') }}">Inicio</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/auth/login') }}">Inicio de sesión</a></li>
+                        {{--<li><a href="{{ url('/auth/register') }}">Registrarse</a></li>--}}
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/auth/logout') }}">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
                     @endif
-                @endif
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                @if (Auth::guest())
-                    <li><a href="{{ url('/auth/login') }}">Inicio de sesión</a></li>
-                    {{--<li><a href="{{ url('/auth/register') }}">Registrarse</a></li>--}}
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/auth/logout') }}">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<main class="container">
-    @yield('content')
-</main>
+    </nav>
+    <main class="container spaceBottom">
+        @yield('content')
+    </main>
 
-<footer>
-    Avenida (Calle) 32 No. 17 - 62 Bogotá D.C., Colombia -
-    Teléfonos: Admisiones: 3078161 - Información: 3380666
-</footer>
+    <footer>
+        Avenida (Calle) 32 No. 17 - 62 Bogotá D.C., Colombia -
+        Teléfonos: Admisiones: 3078161 - Información: 3380666
+    </footer>
+</div>
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

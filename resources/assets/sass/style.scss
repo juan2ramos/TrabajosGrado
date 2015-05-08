@@ -23,18 +23,29 @@
 html, body {
   color: #7a7a7a;
   font-size: 16px;
-  height: 100%;
+  height: calc(100% - 11px);
 }
-
+.spaceBottom{
+  padding-bottom: 40px;
+}
+.wrapper{
+  min-height: 100%;
+  position: relative;
+}
 footer {
   background: #f8f8f8;
   border: 1px solid #e7e7e7;
-  bottom: 0;
+  bottom: -20px;
   padding: 10px;
+  position: absolute;
   text-align: center;
   width: 100%;
 }
 
 .navbar-brand img {
   display: inline;
+}
+
+.is--center{
+  text-align: center;
 }

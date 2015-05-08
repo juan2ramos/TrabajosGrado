@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         \DB::table('users')->insert([
-            'email' => 'camitronik@gmail.com',
+            'email' => 'camilo@gmail.com',
             'password' => \Hash::make('12345'),
             'name' => 'Camilo',
             'last_name' => 'Camargo',
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
             'second_last_name' => 'Lopez',
             'cellphone' => '12123123123',
             'phone' => '1231212312',
-            'rol' =>'researchers'
+            'rol' =>'students'
         ]);
 
         // $this->call('UserTableSeeder');

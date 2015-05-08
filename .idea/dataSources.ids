@@ -31,6 +31,16 @@
       <exported-key name="call_option_call_id_foreign" table="call_option" schema="" catalog="tg" columns="call_id"/>
       <exported-key name="student_call_call_id_foreign" table="student_call" schema="" catalog="tg" columns="call_id"/>
     </table>
+    <table name="documents" schema="" catalog="tg" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="project_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="documents_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="documents_project_id_foreign" unique="false" columns="project_id"/>
+    </table>
     <table name="faculties" schema="" catalog="tg" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name_faculty" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -126,6 +136,7 @@
       <column name="state_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="failure" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="observation" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="option_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
@@ -133,6 +144,7 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="projects_option_id_foreign" columns="option_id" ref-table="options" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="projects_state_id_foreign" columns="state_id" ref-table="states" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="documents_project_id_foreign" table="documents" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="faculty_project_project_id_foreign" table="faculty_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="line_project_project_id_foreign" table="line_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="researcher_project_project_id_foreign" table="researcher_project" schema="" catalog="tg" columns="project_id"/>

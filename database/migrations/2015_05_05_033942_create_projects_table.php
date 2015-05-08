@@ -23,6 +23,7 @@ class CreateProjectsTable extends Migration {
 			$table->foreign('state_id')->references('id')->on('states');
 			$table->string('failure');
 			$table->text('observation');
+			$table->text('description');
 			$table->date('date');
 
 			$table->integer('option_id')->unsigned();

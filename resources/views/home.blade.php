@@ -7,14 +7,13 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         @if (Auth::guest())
-                            INVITACION A ESTUDIANTES- TRABAJOS DE GRADO MODULO DE PRESENTACION
+                            Plataforma de trabajos de grado
                         @else
-                            Bienvenido {{ Auth::user()->name }} a la plataforma de trabajo
+                            Bienvenido {{ Auth::user()->name }} a la plataforma de trabajos de grado
                         @endif
                     </div>
                     <div class="panel-body">
-                        CAMPO DE TEXTO ALIMENTADO POR LOS DOCENTES-OPCIONES DE TRABAJO DE GRADO (VIENE DE LA TABLA
-                        MODULO DOCENTE )
+                        Texto de bienvenida explicando la plataforma
                     </div>
                 </div>
             </div>

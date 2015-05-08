@@ -12,7 +12,6 @@ use degreeWorks\Models\Student;
 class StudentController extends Controller {
 
     public function index(){
-        Student::where();
         return view('students.inscription');
     }
 
