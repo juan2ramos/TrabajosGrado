@@ -14,8 +14,8 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="call_option_call_id_foreign" columns="call_id" ref-table="calls" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="call_option_option_id_foreign" columns="option_id" ref-table="options" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="call_option_call_id_foreign" columns="call_id" ref-table="calls" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="call_option_call_id_foreign" unique="false" columns="call_id"/>
       <index name="call_option_option_id_foreign" unique="false" columns="option_id"/>
     </table>
@@ -29,6 +29,7 @@
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="call_option_call_id_foreign" table="call_option" schema="" catalog="tg" columns="call_id"/>
+      <exported-key name="projects_call_id_foreign" table="projects" schema="" catalog="tg" columns="call_id"/>
       <exported-key name="student_call_call_id_foreign" table="student_call" schema="" catalog="tg" columns="call_id"/>
     </table>
     <table name="documents" schema="" catalog="tg" type="TABLE">
@@ -57,8 +58,8 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="faculty_project_faculty_id_foreign" columns="faculty_id" ref-table="faculties" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="faculty_project_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="faculty_project_faculty_id_foreign" columns="faculty_id" ref-table="faculties" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="faculty_project_faculty_id_foreign" unique="false" columns="faculty_id"/>
       <index name="faculty_project_project_id_foreign" unique="false" columns="project_id"/>
     </table>
@@ -79,8 +80,8 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="line_project_line_id_foreign" columns="line_id" ref-table="lines" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="line_project_project_id_foreign" columns="project_id" ref-table="projects" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="line_project_line_id_foreign" columns="line_id" ref-table="lines" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="line_project_line_id_foreign" unique="false" columns="line_id"/>
       <index name="line_project_project_id_foreign" unique="false" columns="project_id"/>
     </table>
@@ -138,17 +139,20 @@
       <column name="observation" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="call_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="option_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="projects_option_id_foreign" columns="option_id" ref-table="options" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="projects_call_id_foreign" columns="call_id" ref-table="calls" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="projects_state_id_foreign" columns="state_id" ref-table="states" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="documents_project_id_foreign" table="documents" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="faculty_project_project_id_foreign" table="faculty_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="line_project_project_id_foreign" table="line_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="researcher_project_project_id_foreign" table="researcher_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="student_project_project_id_foreign" table="student_project" schema="" catalog="tg" columns="project_id"/>
+      <index name="projects_call_id_foreign" unique="false" columns="call_id"/>
       <index name="projects_option_id_foreign" unique="false" columns="option_id"/>
       <index name="projects_state_id_foreign" unique="false" columns="state_id"/>
     </table>

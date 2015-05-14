@@ -7,7 +7,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Escoga su propuesta</div>
                     <div class="panel-body">
-
+                        @if (Session::has('message'))
+                            <div class="alert alert-info">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
                         <form class="form-horizontal" role="form" method="POST"
                               action="{{ url('/opciones-propuesta') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

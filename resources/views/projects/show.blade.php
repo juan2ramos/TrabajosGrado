@@ -7,15 +7,20 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Sube tu propuesta</div>
                     <div class="panel-body">
+                        @if (Session::has('message'))
+                            <div class="alert alert-info">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('/inscripcion-estudiantes') }}">
+                              action="{{ url('/subir-propuesta') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{-- Cedula --}}
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Digite  el nombre de su proyecto</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
+                                    <input type="text"  class="form-control" name="name_project"
                                            value="{{ old('identification') }}">
                                 </div>
                             </div>
@@ -24,7 +29,7 @@
                                 <label class="col-md-4 control-label">Describa  su proyecto</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form-control" rows="3" id="textArea"></textarea>
+                                    <textarea class="form-control" name="description" rows="3" id="textArea"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -49,3 +54,4 @@
         </div>
     </div>
 @endsection
+

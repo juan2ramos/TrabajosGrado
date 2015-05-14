@@ -8,7 +8,7 @@ class Project extends Model {
 
     public function students()
     {
-        return $this->hasMany('degreeWorks\Models\Student');
+        return $this->belongsToMany('degreeWorks\Models\Student');
     }
 
 

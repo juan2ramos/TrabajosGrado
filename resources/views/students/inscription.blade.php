@@ -39,7 +39,7 @@
                                 <label class="col-md-4 control-label">nombre</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="last_name"
+                                    <input type="text" class="form-control" name="name"
                                            value="{{ old('last_name') }}">
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                 <label class="col-md-4 control-label">apellido</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                    <input type="text" class="form-control" name="last_name" value="{{ old('name') }}">
                                 </div>
                             </div>
                             {{-- segundo apellido --}}

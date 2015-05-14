@@ -25,11 +25,14 @@ Route::post('inscripcion-estudiantes','StudentController@create');
 Route::get('opciones-propuesta','OptionController@show');
 Route::post('opciones-propuesta','ProjectController@create');
 Route::get('subir-propuesta','ProjectController@index');
+Route::post('subir-propuesta','ProjectController@openProject');
 Route::get('consultar-resultados','ProjectController@stateStudent');
 
 /* Researcher*/
 Route::get('opciones-grado','OptionController@open');
+Route::post('opciones-grado','OptionController@openSubmit');
 Route::get('abrir-convocatoria','CallController@open');
+Route::post('abrir-convocatoria','CallController@openSubmit');
 Route::get('listado-inscritos','ProjectController@listRegistered');
 Route::get('resultados','ProjectController@results');
 Route::get('historicos','ProjectController@historical');

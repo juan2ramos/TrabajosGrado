@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 			$table->string('second_last_name');
 			$table->string('cellphone');
 			$table->string('phone');
+			$table->string('identification');
 			$table->enum('rol', ['students', 'researchers']);
 			$table->rememberToken();
 			$table->timestamps();

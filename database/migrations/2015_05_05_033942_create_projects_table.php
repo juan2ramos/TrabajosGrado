@@ -19,12 +19,17 @@ class CreateProjectsTable extends Migration {
 			$table->integer('note_1');
 			$table->integer('note_2');
 			$table->integer('note_3');
+
 			$table->integer('state_id')->unsigned();
 			$table->foreign('state_id')->references('id')->on('states');
+
 			$table->string('failure');
 			$table->text('observation');
 			$table->text('description');
 			$table->date('date');
+
+            $table->integer('call_id')->unsigned();
+            $table->foreign('call_id')->references('id')->on('calls');
 
 			$table->integer('option_id')->unsigned();
 			$table->foreign('option_id')->references('id')->on('options');

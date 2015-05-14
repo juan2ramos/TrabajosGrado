@@ -11,6 +11,6 @@ class Student extends Model {
     }
     public function projects()
     {
-        return $this->hasMany('degreeWorks\Models\Project');
+        return $this->belongsToMany('degreeWorks\Models\Project','student_project');
     }
 }

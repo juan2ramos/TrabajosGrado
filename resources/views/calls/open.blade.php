@@ -7,31 +7,42 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Crear convocatoria</div>
                     <div class="panel-body">
+                        @if (Session::has('message'))
+                            <div class="alert alert-info">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('/inscripcion-estudiantes') }}">
+                              action="{{ url('/abrir-convocatoria') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{-- Cedula --}}
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Año convocatoria</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
+                                    <select class="form-control" name="year" id="select" >
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Periodo de la convocatoria</label>
-
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
+                                    <select class="form-control" name="study_period" id="select" >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">fecha apertura </label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="identification"
+                                    <input type="date" class="form-control" name="open_date"
                                            value="{{ old('identification') }}">
                                 </div>
                             </div>
@@ -39,21 +50,17 @@
                                 <label class="col-md-4 control-label">fecha cierre </label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="identification"
+                                    <input type="date" class="form-control" name="close_date"
                                            value="{{ old('identification') }}">
                                 </div>
                             </div>
-
-                            <div class=" checkbox col-md-12">
-                                <label class="col-md-6 control-label">
-                                    <input type="checkbox"> Opción 1
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-12">
-                                <label class="col-md-6 control-label">
-                                    <input type="checkbox"> Opción 2
-                                </label>
-                            </div>
+                            @foreach($options as $option)
+                                <div class=" checkbox col-md-12">
+                                    <label class="col-md-6 control-label">
+                                        <input type="checkbox" name="options[]" value="{{$option->id}}" > {{$option->name_option}}
+                                    </label>
+                                </div>
+                            @endforeach
 
                             <div class="form-group">
                                 <div class="col-md-10 control-label">

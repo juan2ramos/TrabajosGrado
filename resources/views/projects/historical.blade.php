@@ -29,8 +29,6 @@
                             </div>
 
 
-
-
                             <div class="form-group">
                                 <div class="col-md-10 control-label">
                                     <button type="reset" class="btn btn-default">Cancelar</button>
@@ -38,70 +36,72 @@
                                 </div>
                             </div>
                         </form>
-                        <table class="table table-striped table-hover ">
-                            <thead>
-                            <tr>
-                                <th>Estado</th>
-                                <th>Nombre</th>
-                                <th>Opción</th>
-                                <th>nota</th>
-                                <th>Observaciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
+                        @if(isset($historical))
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Opción</th>
+                                    <th>nota</th>
+                                    <th>Observaciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
+                                <tr class="is--center">
+                                    <td>aprobado</td>
+                                    <td>Nombre estudiante</td>
+                                    <td>opcion</td>
+                                    <td>nota</td>
+                                    <td>observacion corta</td>
+                                </tr>
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>

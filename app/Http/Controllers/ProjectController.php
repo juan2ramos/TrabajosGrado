@@ -18,9 +18,18 @@ use Carbon\Carbon;
 class ProjectController extends Controller
 {
 
-    public function index()
+    public function index(Request $request,Redirector $redirect)
     {
         return view('projects.show');
+    }
+    public function openProject(Request $request,Redirector $redirect)
+    {
+        $project = new Project($request->all() + ['state_id' => '1'] + ['date' => Carbon::now()] + ['option_id' => 4]);
+        $project->save();
+        $student = Student::where("user_id","=",$request->user()->id)->first();
+
+        $student->projects()->save($project);
+        return $redirect->back()->with('message','Felicitaciones ya tienes un proyecto.');
     }
 
     public function stateStudent()
@@ -40,6 +49,11 @@ class ProjectController extends Controller
 
     public function historical()
     {
+
+        return view('projects.historical');
+    }
+    public function historicalPost()
+    {
         return view('projects.historical');
     }
 
@@ -57,14 +71,11 @@ class ProjectController extends Controller
     {
         $project = new Project($request->all() + ['state_id' => '1'] + ['date' => Carbon::now()]);
         $project->save();
-        $student = Student::whereRaw("user_id = " . $request->user()->id);
+        $student = Student::where("user_id","=",$request->user()->id)->first();
+
         $student->projects()->save($project);
+        return $redirect->back()->with('message','Felicitaciones ya tienes un proyecto.');
 
-        return $redirect->back()->with('message','Usuario Creado');
-
-
-
-       /**/
 
     }
 
