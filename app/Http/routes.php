@@ -13,6 +13,7 @@
 
 
 Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -20,7 +21,9 @@ Route::controllers([
 ]);
 /* Students */
 Route::get('inscripcion-estudiantes','StudentController@index');
+Route::post('inscripcion-estudiantes','StudentController@create');
 Route::get('opciones-propuesta','OptionController@show');
+Route::post('opciones-propuesta','ProjectController@create');
 Route::get('subir-propuesta','ProjectController@index');
 Route::get('consultar-resultados','ProjectController@stateStudent');
 

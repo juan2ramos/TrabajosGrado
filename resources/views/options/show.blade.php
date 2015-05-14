@@ -8,24 +8,25 @@
                     <div class="panel-heading">Escoga su propuesta</div>
                     <div class="panel-body">
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/inscripcion-estudiantes') }}">
+                        <form class="form-horizontal" role="form" method="POST"
+                              action="{{ url('/opciones-propuesta') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="name_project" value="{{$options[0]->name_option}}"/>
                             <div class="form-group">
                                 <label class="col-md-4 col-lg-offset-1 control-label">Selecciona una opción</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" id="select">
-                                        <option>Selecciona una opción</option>
-                                        <option>Opción 1</option>
-                                        <option>Opción 2</option>
+                                    <select class="form-control" name="option_id" id="select">
+                                        @foreach($options as $option)
+                                            <option value="{{$option->id}}">{{$option->name_option}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-10 col-lg-offset-1">
-                                    <textarea class="form-control" id="textArea">
-                                        Descripción de la opción
-                                    </textarea>
-                                 </div>
+                                    <textarea name="description" class="form-control" id="textArea" readonly>{{$options[0]->description}} </textarea>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-11 control-label">

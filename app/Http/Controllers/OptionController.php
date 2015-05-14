@@ -12,7 +12,8 @@ use degreeWorks\Models\Option;
 class OptionController extends Controller {
 
     public function show(){
-        return view('options.show');
+        $options = Option::all();
+        return view('options.show',compact('options'));
     }
     public function open(){
         return view('options.open');
