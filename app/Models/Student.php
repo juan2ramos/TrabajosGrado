@@ -7,7 +7,7 @@ class Student extends Model {
     protected $fillable = ['time_day', 'state_record', 'student_program'];
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('degreeWorks\User');
     }
     public function projects()
     {

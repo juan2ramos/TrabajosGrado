@@ -11,25 +11,30 @@ use Carbon\Carbon;
 use degreeWorks\Models\Call;
 use degreeWorks\Models\Macroproject;
 use degreeWorks\Models\Option;
+use degreeWorks\Models\Project;
+use degreeWorks\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
 class OptionController extends Controller {
 
-    public function show(){
+    public function show(Request $request){
         $dateNow =  Carbon::now();
-        $year = $dateNow->year;
-        $month = $dateNow->month;
-        $period = ($month <= 6)?1:2;
-        $calls = Call::whereRaw("year = $year and study_period = $period ")->first();
-        dd($calls);
+        $period = ($dateNow->month <= 6)?1:2;
+        $call = Call::whereRaw("year = $dateNow->year and study_period = $period ")->first();
 
-
-        foreach ($options as $option){
-            print_r($option->calls()->get());
+        $options = ($call)?$call->options()->get():null;
+        $idCall = $call->id;
+        $projects = Project::whereRaw("call_id = $idCall")->get();
+        $idStudent = Student::find($request->user()->id)->id;
+        $studentCall = 0;
+        foreach($projects as $project){
+            $studentCall = (is_null($project))?null:$project->studentCall($idStudent)->count();
+            if($studentCall){
+                break;
+            }
         }
-        dd();
-        return view('options.show',compact('options'));
+        return view('options.show',compact('options','call','studentCall'));
     }
     public function open(){
         $macroprojects = Macroproject::all();

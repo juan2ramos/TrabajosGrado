@@ -9,5 +9,9 @@ class Call extends Model {
     {
         return $this->belongsToMany('degreeWorks\Models\Option');
     }
+    public function projects()
+    {
+        return $this->hasOne('degreeWorks\Models\Project');
+    }
 
 }

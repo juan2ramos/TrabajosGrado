@@ -8,27 +8,30 @@
                     <div class="panel-heading">Historicos</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('/inscripcion-estudiantes') }}">
+                              action="{{ url('/historicos') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            {{-- Cedula --}}
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Año convocatoria</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
+                                    <select class="form-control" name="year" id="select" >
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Periodo de la convocatoria</label>
-
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
+                                    <select class="form-control" name="study_period" id="select" >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <div class="col-md-10 control-label">
                                     <button type="reset" class="btn btn-default">Cancelar</button>
@@ -36,68 +39,27 @@
                                 </div>
                             </div>
                         </form>
-                        @if(isset($historical))
+                        @if(isset($projectStudents))
                             <table class="table table-striped table-hover ">
                                 <thead>
                                 <tr>
                                     <th>Estado</th>
                                     <th>Nombre</th>
-                                    <th>Opción</th>
+                                    <th>Estudiante</th>
                                     <th>nota</th>
                                     <th>Observaciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($projectStudents as $projectStudent)
                                 <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
+                                    <td>{{$projectStudent['state']->name_state}}</td>
+                                    <td>{{$projectStudent['project']->name_project}}</td>
+                                    <td>{{$projectStudent['user']->name}}</td>
+                                    <td>{{$projectStudent['project']->note_1}}</td>
+                                    <td>{{$projectStudent['project']->observation}}</td>
                                 </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-                                <tr class="is--center">
-                                    <td>aprobado</td>
-                                    <td>Nombre estudiante</td>
-                                    <td>opcion</td>
-                                    <td>nota</td>
-                                    <td>observacion corta</td>
-                                </tr>
-
+                                @endforeach
 
                                 </tbody>
                             </table>

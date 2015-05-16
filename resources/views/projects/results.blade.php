@@ -8,70 +8,31 @@
                     <div class="panel-heading">Resultados</div>
                     <div class="panel-body">
 
-                        <table class="table table-striped table-hover ">
-                            <thead>
-                            <tr>
-                                <th>Estado</th>
-                                <th>Nombre</th>
-                                <th>Opción</th>
-                                <th>nota</th>
-                                <th>Observaciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                 <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                                <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
-                            <tr class="is--center">
-                                <td>aprobado</td>
-                               <td>Nombre estudiante</td>
-                                <td>opcion</td>
-                                <td>nota</td>
-                                <td>observacion corta</td>
-                            </tr>
+                        @if(isset($projectStudents))
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Estudiante</th>
+                                    <th>nota</th>
+                                    <th>Observaciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($projectStudents as $projectStudent)
+                                    <tr class="is--center">
+                                        <td>{{$projectStudent['state']->name_state}}</td>
+                                        <td>{{$projectStudent['project']->name_project}}</td>
+                                        <td>{{$projectStudent['user']->name}}</td>
+                                        <td>{{$projectStudent['project']->note_1}}</td>
+                                        <td>{{$projectStudent['project']->observation}}</td>
+                                    </tr>
+                                @endforeach
 
-
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>
