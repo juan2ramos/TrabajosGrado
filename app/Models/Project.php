@@ -22,6 +22,14 @@ class Project extends Model
     {
         return $this->belongsTo('degreeWorks\Models\State','state_id');
     }
+    public function documents()
+    {
+        return $this->hasOne('degreeWorks\Models\Document');
+    }
+    public function options()
+    {
+        return $this->hasOne('degreeWorks\Models\Option');
+    }
 
 
 }

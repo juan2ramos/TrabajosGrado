@@ -32,7 +32,6 @@ class CreateProjectsTable extends Migration {
             $table->foreign('call_id')->references('id')->on('calls');
 
 			$table->integer('option_id')->unsigned();
-			$table->foreign('option_id')->references('id')->on('options');
 			$table->timestamps();
 		});
 	}

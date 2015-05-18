@@ -22,12 +22,23 @@ class OptionController extends Controller {
         $dateNow =  Carbon::now();
         $period = ($dateNow->month <= 6)?1:2;
         $call = Call::whereRaw("year = $dateNow->year and study_period = $period ")->first();
-
+        if(!$call){
+            $message = 'No hay convocatorias abiertas';
+            return view('message',compact('message'));
+        }
         $options = ($call)?$call->options()->get():null;
         $idCall = $call->id;
         $projects = Project::whereRaw("call_id = $idCall")->get();
-        $idStudent = Student::find($request->user()->id)->id;
         $studentCall = 0;
+        if($options->isEmpty()){
+
+                $message = 'No hay opciones ';
+                return view('message',compact('message'));
+        }
+        if($projects->isEmpty()){
+            return view('options.show', compact('options','call','studentCall'));
+        }
+        $idStudent = Student::find($request->user()->id)->id;
         foreach($projects as $project){
             $studentCall = (is_null($project))?null:$project->studentCall($idStudent)->count();
             if($studentCall){
@@ -44,6 +55,10 @@ class OptionController extends Controller {
         $option = new Option($request->all());
         $option->save();
         return $redirect->back()->with('message','Opción creada.');
+    }
+    public function description(Request $request){
+        $id = $request->get('id');
+        return response()->json(['description' => Option::find($id)->description]);
     }
 
 

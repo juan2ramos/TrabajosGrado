@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - tg@localhost" uuid="5733fbfc-c4cf-4eb1-b7bd-d2c6b2d6ec8e">
-    <database-info product="MySQL" version="5.5.38" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+    <database-info product="MySQL" version="5.5.38" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -118,7 +118,6 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="options_macroproject_id_foreign" columns="macroproject_id" ref-table="macroprojects" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="call_option_option_id_foreign" table="call_option" schema="" catalog="tg" columns="option_id"/>
-      <exported-key name="projects_option_id_foreign" table="projects" schema="" catalog="tg" columns="option_id"/>
       <index name="options_macroproject_id_foreign" unique="false" columns="macroproject_id"/>
     </table>
     <table name="password_resets" schema="" catalog="tg" type="TABLE">
@@ -144,7 +143,6 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="projects_option_id_foreign" columns="option_id" ref-table="options" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="projects_call_id_foreign" columns="call_id" ref-table="calls" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="projects_state_id_foreign" columns="state_id" ref-table="states" ref-schema="" ref-catalog="tg" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="documents_project_id_foreign" table="documents" schema="" catalog="tg" columns="project_id"/>
@@ -153,7 +151,6 @@
       <exported-key name="researcher_project_project_id_foreign" table="researcher_project" schema="" catalog="tg" columns="project_id"/>
       <exported-key name="student_project_project_id_foreign" table="student_project" schema="" catalog="tg" columns="project_id"/>
       <index name="projects_call_id_foreign" unique="false" columns="call_id"/>
-      <index name="projects_option_id_foreign" unique="false" columns="option_id"/>
       <index name="projects_state_id_foreign" unique="false" columns="state_id"/>
     </table>
     <table name="researcher_project" schema="" catalog="tg" type="TABLE">

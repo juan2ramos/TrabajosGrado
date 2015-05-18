@@ -17,7 +17,7 @@
                             @else
                                 @if($call)
                                     <form class="form-horizontal" role="form" method="POST"
-                                          action="{{ url('/subir-propuesta') }}">
+                                          action="{{ url('/subir-propuesta') }}" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="call_id" value="{{ $call->id }}">
                                         {{-- Cedula --}}
@@ -43,9 +43,9 @@
                                             <label class="col-md-4 control-label">Documento</label>
 
                                             <div class="col-md-6">
-                                                <input type="file" class="form-control file" id="input-1a"
-                                                       name="identification"
-                                                       value="{{ old('identification') }}">
+                                                <input type="file" class="form-control file" id="file"
+                                                       name="fileDocument"
+                                                       value="{{ old('file') }}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -65,5 +65,5 @@
             </div>
         </div>
     </div>
-@endsection
 
+@endsection

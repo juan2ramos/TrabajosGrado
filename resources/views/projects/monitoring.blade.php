@@ -7,43 +7,35 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Seguimiento</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('/inscripcion-estudiantes') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            {{-- Cedula --}}
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Opción proyecto</label>
+                        @if(isset($projectStudents))
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Estudiante</th>
+                                    <th>nota</th>
+                                    <th>realizar seguimiento</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($projectStudents as $projectStudent)
+                                    <tr class="is--center">
+                                        <td>{{$projectStudent['state']->name_state}}</td>
+                                        <td>{{$projectStudent['project']->name_project}}</td>
+                                        <td>{{$projectStudent['user']->name}}</td>
+                                        <td>{{$projectStudent['project']->note_1}}</td>
+                                        <td>
+                                            <a href="{{route('editProject',$projectStudent['project']->id)}}">
+                                                Actualizar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Nombre proyecto</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="identification"
-                                           value="{{ old('identification') }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Documento</label>
-
-                                <div class="col-md-6">
-                                    <input type="file" class="form-control file" id="input-1a" name="identification"
-                                           value="{{ old('identification') }}">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="col-md-10 control-label">
-                                    <button type="reset" class="btn btn-default">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </div>
-                            </div>
-                        </form>
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>

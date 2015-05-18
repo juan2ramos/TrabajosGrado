@@ -12,7 +12,6 @@
                                 {{ Session::get('message') }}
                             </div>
                         @else
-
                             @if($studentCall)
                                 <span>ya tienes un proyecto inscrito</span>
                             @else
@@ -28,7 +27,7 @@
                                                 opción</label>
 
                                             <div class="col-md-6">
-                                                <select class="form-control" name="option_id" id="select">
+                                                <select class="form-control" name="option_id" id="selectOption">
                                                     @foreach($options as $option)
                                                         <option value="{{$option->id}}">{{$option->name_option}}</option>
                                                     @endforeach
@@ -37,7 +36,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-10 col-lg-offset-1">
-                                    <textarea name="description" class="form-control" id="textArea"
+                                    <textarea name="description" class="form-control" id="descriptionOption"
                                               readonly>{{$options[0]->description}} </textarea>
                                             </div>
                                         </div>
