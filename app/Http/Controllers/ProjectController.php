@@ -183,6 +183,10 @@ class ProjectController extends Controller
     {
         return view('projects.statistics');
     }
+    public function statisticsPost()
+    {
+        return view('projects.statistics');
+    }
 
     public function monitoring()
     {

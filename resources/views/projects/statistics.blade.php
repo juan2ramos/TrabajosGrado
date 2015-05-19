@@ -28,18 +28,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 col-lg-offset-1 control-label">Estado</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" id="select">
-                                    <option>Selecciona una opción</option>
-                                    <option>Opción 1</option>
-                                    <option>Opción 2</option>
-                                </select>
-                            </div>
-                        </div>
-
 
                         <div class="form-group">
                             <div class="col-md-10 control-label">
@@ -69,7 +57,7 @@
     <script>
         var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
         var lineChartData = {
-            labels : ["January","February","March","April","May","June","July"],
+            labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio"],
             datasets : [
                 {
                     label: "My First dataset",

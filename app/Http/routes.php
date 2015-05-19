@@ -39,14 +39,19 @@ Route::get('resultados', 'ProjectController@results');
 Route::get('historicos', 'ProjectController@historical');
 Route::post('historicos', 'ProjectController@historicalPost');
 Route::get('estadisticas', 'ProjectController@statistics');
+Route::post('estadisticas', 'ProjectController@statisticsPost');
 Route::get('seguimiento-proyectos', 'ProjectController@monitoring');
 
 
 Route::get('optionChange', 'OptionController@description');
 Route::post('seguimiento', 'ProjectController@editPost');
 Route::get('edit/{id}', ['as' => 'editProject', 'uses' => 'ProjectController@edit']);
+Route::get('editCall/{id}', ['as' => 'editCall', 'uses' => 'CallController@edit']);
 
 Route::get('fileentry/get/{filename}', [
     'as' => 'document', 'uses' => 'ProjectController@getDocument']);
+
+Route::get('ver-convocatoria', 'CallController@show');
+Route::post('actualizar-convocatoria', 'CallController@editPost');
 
 

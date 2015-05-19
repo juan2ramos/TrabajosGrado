@@ -44,6 +44,7 @@
                                    aria-expanded="false">Convocatoria TG <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('abrir-convocatoria') }}">Abrir convocatoria </a></li>
+                                    <li><a href="{{ url('ver-convocatoria') }}">Ver convocatoria </a></li>
                                     <li><a href="{{ url('listado-inscritos') }}">Generar listado de inscritos</a></li>
                                 </ul>
                             </li>
@@ -98,9 +99,9 @@
     </footer>
 </div>
 <!-- Scripts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/chart.js"></script>
+<script src="{{ url('js/jquery.min.js') }}"></script>
+<script src="{{ url('js/bootstrap.min.js') }}"></script>
+<script src="{{ url('js/main.js') }}"></script>
+<script src="{{ url('js/chart.js') }}"></script>
 </body>
 </html>

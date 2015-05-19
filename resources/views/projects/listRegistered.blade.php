@@ -15,8 +15,8 @@
                                 <tr>
                                     <th>aprobado</th>
                                     <th>No aprobado</th>
-                                    <th>Nombre</th>
-                                    <th>Opción</th>
+                                    <th>Estudiante</th>
+                                    <th>Nombre Proyecto</th>
                                     <th>Observaciones</th>
                                 </tr>
                                 </thead>
@@ -29,9 +29,8 @@
                                             <td><input type="radio" name="{{$projectStudent['project']->id}}" value="3"
                                                 @if($projectStudent['state']->id == 3) checked=""@endif></td>
 
-                                            <td>{{$projectStudent['state']->name_state}}</td>
-                                            <td>{{$projectStudent['project']->name_project}}</td>
                                             <td>{{$projectStudent['user']->name}}</td>
+
                                             <td>{{$projectStudent['project']->observation}}</td>
                                         </tr>
                                     @endforeach
