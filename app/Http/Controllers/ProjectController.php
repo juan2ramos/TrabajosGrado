@@ -30,26 +30,26 @@ class ProjectController extends Controller
         $dateNow = Carbon::now();
         $period = ($dateNow->month <= 6) ? 1 : 2;
         $call = Call::whereRaw("year = $dateNow->year and study_period = $period ")->first();
-        if(!$call){
+        if (!$call) {
             $message = 'No hay convocatorias abiertas';
-            return view('message',compact('message'));
+            return view('message', compact('message'));
         }
         $idCall = $call->id;
         $projects = Project::whereRaw("call_id = $idCall")->get();
         $studentCall = 0;
-        if(!$projects){
+        if (!$projects) {
 
-            return view('projects.show', compact('call','studentCall'));
+            return view('projects.show', compact('call', 'studentCall'));
         }
         $idStudent = Student::find($request->user()->id)->id;
 
-        foreach($projects as $project){
-            $studentCall = (is_null($project))?null:$project->studentCall($idStudent)->count();
-            if($studentCall){
+        foreach ($projects as $project) {
+            $studentCall = (is_null($project)) ? null : $project->studentCall($idStudent)->count();
+            if ($studentCall) {
                 break;
             }
         }
-        return view('projects.show', compact('call','studentCall'));
+        return view('projects.show', compact('call', 'studentCall'));
     }
 
     public function openProject(Request $request, Redirector $redirect)
@@ -57,8 +57,8 @@ class ProjectController extends Controller
 
         $file = $request->file('fileDocument');
         $extension = $file->getClientOriginalExtension();
-        $nameFile = str_random(40).'.'.$extension;
-        Storage::disk('local')->put($nameFile,   File::get($file));
+        $nameFile = str_random(40) . '.' . $extension;
+        Storage::disk('local')->put($nameFile, File::get($file));
         $document = new Document(['url' => $nameFile]);
 
         $project = new Project($request->all() + ['state_id' => '1'] + ['date' => Carbon::now()] + ['option_id' => 1]);
@@ -75,10 +75,10 @@ class ProjectController extends Controller
         $studyPeriod = ($dateNow->month <= 6) ? 1 : 2;
         $year = $dateNow->year;
         $call = Call::whereRaw("year = $year and study_period = $studyPeriod ")->first();
-        if($call){
+        if ($call) {
             $projectStudents = [];
-            $projects =$call->projects()->get();
-            foreach($projects as $project){
+            $projects = $call->projects()->get();
+            foreach ($projects as $project) {
                 $student = $project->students()->first();
                 $user = $student->user()->first();
                 $state = $project->states()->first();
@@ -90,9 +90,10 @@ class ProjectController extends Controller
                 ];
             }
         }
-        return view('projects.listRegistered',compact('projectStudents'));
+        return view('projects.listRegistered', compact('projectStudents'));
 
     }
+
     public function listRegisteredPost(Request $request)
     {
         $requestArray = $request->all();
@@ -107,10 +108,10 @@ class ProjectController extends Controller
         $studyPeriod = ($dateNow->month <= 6) ? 1 : 2;
         $year = $dateNow->year;
         $call = Call::whereRaw("year = $year and study_period = $studyPeriod ")->first();
-        if($call){
+        if ($call) {
             $projectStudents = [];
-            $projects =$call->projects()->get();
-            foreach($projects as $project){
+            $projects = $call->projects()->get();
+            foreach ($projects as $project) {
                 $student = $project->students()->first();
                 $user = $student->user()->first();
                 $state = $project->states()->first();
@@ -122,7 +123,7 @@ class ProjectController extends Controller
                 ];
             }
         }
-        return view('projects.listRegistered',compact('projectStudents'));
+        return view('projects.listRegistered', compact('projectStudents'));
 
     }
 
@@ -132,10 +133,10 @@ class ProjectController extends Controller
         $studyPeriod = ($dateNow->month <= 6) ? 1 : 2;
         $year = $dateNow->year;
         $call = Call::whereRaw("year = $year and study_period = $studyPeriod ")->first();
-        if($call){
+        if ($call) {
             $projectStudents = [];
-            $projects =$call->projects()->get();
-            foreach($projects as $project){
+            $projects = $call->projects()->get();
+            foreach ($projects as $project) {
                 $student = $project->students()->first();
                 $user = $student->user()->first();
                 $state = $project->states()->first();
@@ -147,7 +148,7 @@ class ProjectController extends Controller
                 ];
             }
         }
-        return view('projects.results',compact('projectStudents'));
+        return view('projects.results', compact('projectStudents'));
     }
 
     public function historical()
@@ -161,10 +162,10 @@ class ProjectController extends Controller
         $studyPeriod = $request->get('study_period');
         $year = $request->get('year');
         $call = Call::whereRaw("year = $year and study_period = $studyPeriod ")->first();
-        if($call){
+        if ($call) {
             $projectStudents = [];
-            $projects =$call->projects()->get();
-            foreach($projects as $project){
+            $projects = $call->projects()->get();
+            foreach ($projects as $project) {
                 $student = $project->students()->first();
                 $user = $student->user()->first();
                 $state = $project->states()->first();
@@ -176,15 +177,30 @@ class ProjectController extends Controller
                 ];
             }
         }
-        return view('projects.historical',compact('projectStudents'));
+        return view('projects.historical', compact('projectStudents'));
     }
 
     public function statistics()
     {
         return view('projects.statistics');
     }
-    public function statisticsPost()
+
+    public function statisticsPost(Request $request)
     {
+        $year = $request->get('year');
+        $studyPeriod = $request->get('study_period');
+        $call = Call::whereRaw("year = $year and study_period = $studyPeriod")->first();
+        $projects = Project::where('call_id', "=", $call->id)->get();
+        $data = [0, 0, 0, 0, 0, 0];
+        foreach ($projects as $project) {
+            $date = explode('-', $project->date);
+            $month = intval($date[1]);
+            if($studyPeriod == 2){
+                $month = $month + 5;
+            }
+            $data[$month] = $data[$month] + 1;
+        }
+
         return view('projects.statistics');
     }
 
@@ -194,10 +210,10 @@ class ProjectController extends Controller
         $studyPeriod = ($dateNow->month <= 6) ? 1 : 2;
         $year = $dateNow->year;
         $call = Call::whereRaw("year = $year and study_period = $studyPeriod ")->first();
-        if($call){
+        if ($call) {
             $projectStudents = [];
-            $projects =$call->projects()->get();
-            foreach($projects as $project){
+            $projects = $call->projects()->get();
+            foreach ($projects as $project) {
                 $student = $project->students()->first();
                 $user = $student->user()->first();
                 $state = $project->states()->first();
@@ -209,7 +225,7 @@ class ProjectController extends Controller
                 ];
             }
         }
-        return view('projects.monitoring',compact('projectStudents'));
+        return view('projects.monitoring', compact('projectStudents'));
 
     }
 
@@ -225,29 +241,33 @@ class ProjectController extends Controller
 
 
     }
+
     public function edit($id)
     {
         $project = Project::find($id);
         $states = State::all();
-        $documents = Document::whereRaw('project_id = ' . $id )->get();
+        $documents = Document::whereRaw('project_id = ' . $id)->get();
 
         // $option = Option::find($project->id);
 
-        return view('projects.edit',compact('project','states', 'documents'));
+        return view('projects.edit', compact('project', 'states', 'documents'));
     }
+
     public function editPost(Request $request)
     {
 
         $project = Project::find($request->get("id"));
         $project->fill($request->all());
         $project->save();
-        $documents = Document::whereRaw('project_id = ' . $request->get("id") )->get();
+        $documents = Document::whereRaw('project_id = ' . $request->get("id"))->get();
         $states = State::all();
-       // $option = Option::find($project->id);
+        // $option = Option::find($project->id);
 
-        return view('projects.edit',compact('project','states', 'documents'));
+        return view('projects.edit', compact('project', 'states', 'documents'));
     }
-    public function getDocument($filename){
+
+    public function getDocument($filename)
+    {
 
         $entry = Document::where('url', '=', $filename)->firstOrFail();
         $file = Storage::disk('local')->get($entry->url);
@@ -262,15 +282,15 @@ class ProjectController extends Controller
         $student = Student::where("user_id", "=", $request->user()->id)->firstOrFail();
         $project = $student->projects()->first();
         $entry = 0;
-        if(is_null($project)){
+        if (is_null($project)) {
             $entry = 1;
-            return view('projects.stateStudent',compact('entry', 'project','states', 'documents'));
+            return view('projects.stateStudent', compact('entry', 'project', 'states', 'documents'));
         }
         $states = State::all();
-        $documents = Document::whereRaw('project_id = ' . $project->id )->get();
+        $documents = Document::whereRaw('project_id = ' . $project->id)->get();
 
         // $option = Option::find($project->id);
-        return view('projects.stateStudent',compact('entry','project','states', 'documents'));
+        return view('projects.stateStudent', compact('entry', 'project', 'states', 'documents'));
 
 
     }
