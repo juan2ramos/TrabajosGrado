@@ -21,7 +21,8 @@ class UserTableSeeder extends Seeder
             'second_last_name' => 'Reyes',
             'cellphone' => '12123123123',
             'phone' => '1231212312',
-            'rol' =>'researchers'
+            'rol' =>'researchers',
+            'identification' => '12121212'
         ]);
         \DB::table('users')->insert([
             'email' => 'jorge@gmail.com',
@@ -31,7 +32,8 @@ class UserTableSeeder extends Seeder
             'second_last_name' => 'Lopez',
             'cellphone' => '12123123123',
             'phone' => '1231212312',
-            'rol' =>'students'
+            'rol' =>'students',
+            'identification' => '12121212'
         ]);
 
         // $this->call('UserTableSeeder');
