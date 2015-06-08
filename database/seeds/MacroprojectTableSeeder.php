@@ -13,19 +13,7 @@ class MacroprojectTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('macroprojects')->insert([
-            'name_macroprojects' => 'MP1',
-            'state' => 'Activo'
-
-        ]);\DB::table('macroprojects')->insert([
-            'name_macroprojects' => 'MP2',
-            'state' => 'Activo'
-
-        ]);\DB::table('macroprojects')->insert([
-            'name_macroprojects' => 'MP3',
-            'state' => 'Activo'
-
-        ]);
+        
         // $this->call('UserTableSeeder');
     }
 
