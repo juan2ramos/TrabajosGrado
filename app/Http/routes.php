@@ -54,4 +54,7 @@ Route::get('fileentry/get/{filename}', [
 Route::get('ver-convocatoria', 'CallController@show');
 Route::post('actualizar-convocatoria', 'CallController@editPost');
 
+Route::get('macroproyectos', 'MacroController@index');
+Route::post('macroproyectos', 'MacroController@post');
+
 

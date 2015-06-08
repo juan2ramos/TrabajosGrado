@@ -16,6 +16,7 @@ class CreateMacroprojectsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name_macroprojects');
+			$table->text('description');
 			$table->string('state');
 			$table->timestamps();
 		});

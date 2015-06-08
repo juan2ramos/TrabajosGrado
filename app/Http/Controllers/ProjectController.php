@@ -200,7 +200,7 @@ class ProjectController extends Controller
             }
             $data[$month] = $data[$month] + 1;
         }
-
+        dd($dat);
         return view('projects.statistics');
     }
 
