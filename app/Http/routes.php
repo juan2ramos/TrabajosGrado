@@ -55,6 +55,9 @@ Route::get('ver-convocatoria', 'CallController@show');
 Route::post('actualizar-convocatoria', 'CallController@editPost');
 
 Route::get('macroproyectos', 'MacroController@index');
+Route::get('listado-macroproyectos', 'MacroController@show');
 Route::post('macroproyectos', 'MacroController@post');
+
+Route::get('programas', 'ProgramsController@index');
 
 

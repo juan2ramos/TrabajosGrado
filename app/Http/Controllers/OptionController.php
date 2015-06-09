@@ -21,7 +21,7 @@ class OptionController extends Controller {
     public function show(Request $request){
         $dateNow =  Carbon::now();
         $period = ($dateNow->month <= 6)?1:2;
-        $call = Call::whereRaw("year = $dateNow->year  ")->first();
+        $call = Call::whereRaw("year = $dateNow->year  and study_period = $period")->first();
         if(!$call){
             $message = 'No hay convocatorias abiertas';
             return view('message',compact('message'));

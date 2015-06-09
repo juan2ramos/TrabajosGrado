@@ -23,13 +23,12 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class MacroController extends Controller
+class ProgramsController extends Controller
 {
 
     public function index(Request $request, Redirector $redirect)
     {
-
-        return view('macro.show');
+        return view('programs.show');
     }
     public function post(Request $request, Redirector $redirect)
     {

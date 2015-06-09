@@ -47,6 +47,7 @@
                                     <li><a href="{{ url('ver-convocatoria') }}">Ver convocatoria </a></li>
                                     <li><a href="{{ url('listado-inscritos') }}">Generar listado de inscritos</a></li>
                                     <li><a href="{{ url('macroproyectos') }}">Macroproyectos</a></li>
+                                    <li><a href="{{ url('listado-macroproyectos') }}">Listado Macroproyectos</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ url('opciones-grado') }}">Opciones</a></li>
